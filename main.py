@@ -23,11 +23,18 @@ if __name__ == '__main__':
     # statement.execute("select * from courses where link='https://vma.viko.lt/course/view.php?id=707'")
     statement.execute("select * from courses")
 
+
+
     # Fetch one first match
     #print(statement.fetchone())
     # Fetchall all records with separator new line
     print(*statement.fetchall(), sep='\n')
     # fetch first 2 items
     #print(statement.fetchmany(2))
+
+    print('-'*300)
+    statement.execute("select * from courses where link=:link", {'link': 'https://vma.viko.lt/course/view.php?id=705'})
+    print(*statement.fetchall(), sep='\n')
+
     connection.commit()
     connection.close()
